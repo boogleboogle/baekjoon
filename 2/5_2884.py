@@ -2,7 +2,6 @@
 # 2884번 알람 시계
 
 import sys
-import datetime
 
 sys.stdin = open('input.txt')
 
@@ -10,6 +9,7 @@ input = sys.stdin.readline
 
 # 여기부터 제출해야 한다.
 # [참고](https://docs.python.org/3.8/library/datetime.html#strftime-and-strptime-format-codes)
+import datetime
 H, M = map(int, input().split())
 
 # datetime.time은 timedelta연산이 안되기 때문에, datetime.datetime을 사용했다.
