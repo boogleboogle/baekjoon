@@ -22,7 +22,7 @@ q.append((1, 1))
 
 visited = dict()
 visited[(1, 1)] = 0
-
+ 
 while q:
     x, y = q.popleft()  # 좌표
     
@@ -40,4 +40,4 @@ while q:
                 q.append((tx, ty))
             else:  # 빈 방이라면
                 visited[(tx, ty)] = visited[(x, y)]
-                q.appendleft((tx, ty))
+                q.appendleft((tx, ty)) # 우선순위를 준다.
