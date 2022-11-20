@@ -9,23 +9,38 @@ input = sys.stdin.readline
 
 # 여기부터 제출해야 한다.
 
-N=int(input())
-
 from collections import deque
-
-def bfs(v):
-    q = deque([v])
-    while q:
-        v = q.popleft()
-        if v == k:
-            return array[v]
-        for next_v in (v-1, v+1, 2*v):
-            if 0 <= next_v < MAX and not array[next_v]:
-                array[next_v] = array[v] + 1
-                q.append(next_v)
+from pprint import pprint
+N = int(input())
+r1, c1, r2, c2 = map(int, input().split())
 
 
-MAX = 100001
-n, k = map(int, sys.stdin.readline().split())
-array = [0] * MAX
-print(bfs(n))
+dx = [-2, -2, 0, 1, 2, 2]
+dy = [-1, 1, -2, 2, -1, 1]
+
+# 체스판의 행과 열은 0번부터 시작한다
+list_visit = list(list(-1 for i in range(N)) for i in range(N))
+
+list_visit[r1][c1] = 0
+# pprint(list_visit)
+
+list_q = [[r1, c1]]
+
+
+while list_q:
+    now = list_q.pop(0)  # 현재위치
+    x, y = now[0], now[1]
+    
+    if x == r2 and y == c2:
+        print(list_visit[x][y])
+        break
+        
+    for i in range(6):
+        tx = dx[i] + x
+        ty = dy[i] + y
+
+        if 0 <= tx < N and 0 <= ty < N  and list_visit[tx][ty] == -1:
+            list_q.append([tx,ty])
+            list_visit[tx][ty] = list_visit[x][y] + 1
+
+pprint(list_visit)
