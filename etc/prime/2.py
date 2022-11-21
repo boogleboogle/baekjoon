@@ -8,8 +8,6 @@ input = sys.stdin.readline
 
 N, M = map(int, input().split())
 
-
-
 list_result = []
 
 for number in range(N, M+1):
@@ -19,7 +17,5 @@ for number in range(N, M+1):
         temp = temp * int(i)
     list_result.append(temp)
 
-
-    # print(number)
 
 print(sum(list_result))

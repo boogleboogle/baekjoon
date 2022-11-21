@@ -10,6 +10,5 @@ input = sys.stdin.readline
 N = int(input())
 list_wine = list(map(int, input().split()))
 
-print(list_wine)
 
-print(sum(list_wine))
+print(sum(list_wine)-min(list_wine)*N)

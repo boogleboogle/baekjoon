@@ -22,8 +22,8 @@ list_temp = text_input.split('-')
     #         result -= int(j)
         # print(temp)
 
-print(list_temp)
-print(result)
+# print(list_temp)
+# print(result)
 
 for i in range(len(list_temp)):
     sum_temp = 0
