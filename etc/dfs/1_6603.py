@@ -1,3 +1,14 @@
+# 백준 DFS
+# 6603번 로또
+
+import sys
+
+sys.stdin = open('input.txt')
+
+input = sys.stdin.readline
+
+# 여기부터 제출해야 한다.
+
 # 출력이 될 리스트를 생성한다.
 dp = [0 for _ in range(13)]
 
@@ -13,9 +24,11 @@ def dfs(start, depth):
         dp[depth] = arr[i]
         dfs(i + 1, depth + 1)
 
-
-arr = list(map(int, '8 1 2 3 5 8 13 21 34'.split()))
-
-del arr[0]
-# start = 0, depth = 0
-dfs(0, 0)
+while True:
+    arr = list(map(int, input().split()))
+    if arr[0] == 0:
+        break
+    del arr[0]
+    # start = 0, depth = 0
+    dfs(0, 0)
+    print()
