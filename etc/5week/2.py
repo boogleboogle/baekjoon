@@ -8,10 +8,10 @@ list_v = list(map(int, input().split()))
 
 # print(list_v)
 
-list_count = [10000000]*(n+1)
+list_count = [k+1]*(n+1)
 # print(list_count)
 for i in list_v:
-	if list_count[i] == 10000000:
+	if list_count[i] == k+1:
 		list_count[i]=1
 	else:
 		list_count[i] += 1
