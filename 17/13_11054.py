@@ -32,6 +32,7 @@ for i in range(n):
     dp_2[i] += 1
 
 dp_2= dp_2[::-1]
+
 for i in range(n):
     dp_3[i] = dp_1[i] + dp_2[i] -1
 print(dp_1)
