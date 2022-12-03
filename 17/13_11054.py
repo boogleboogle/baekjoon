@@ -12,8 +12,7 @@ input = sys.stdin.readline
 n = int(input())
 s_1 = list(map(int, input().split()))
 s_2 = s_1[::-1]
-# print(s_1)
-# print(s_2)
+
 dp_1 = [0 for _ in range(n)]
 dp_2 = dp_1[::]
 dp_3 = dp_2[::]
