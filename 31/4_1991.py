@@ -1,5 +1,5 @@
-# 백준 17단계 동적 계획법 1
-# 9184번 신나는 함수 실행
+# 백준 31단계 트리
+# 1967번 트리의 지름
 
 import sys
 
@@ -7,26 +7,50 @@ sys.stdin = open('input.txt')
 
 input = sys.stdin.readline
 
+import pprint
 # 여기부터 제출해야 한다.
 
-def w(a, b, c):
-    if a <= 0 or b<= 0 or c<=0:
-        return 1
-    if a > 20 or b > 20 or c > 20:
-        return w(20, 20, 20)
-    if dp[a][b][c]:
-        return dp[a][b][c]
-    if a<b<c:
-        dp[a][b][c] = w(a,b,c-1)+w(a,b-1,c-1)-w(a, b-1, c)
-        return dp[a][b][c]
-    dp[a][b][c] = w(a-1, b, c)+w(a-1,b-1,c)+w(a-1,b,c-1)-w(a-1,b-1,c-1)
-    return dp[a][b][c]
+# 노드의 개수
+import sys
 
-dp = [[[0]*(21) for _ in range(21)] for _ in range(21)]
-# 0~20까지므로
+input = sys.stdin.readline
+sys.setrecursionlimit(10**9)
+n = int(input())
 
-while 1:
+
+graph = [[] for _ in range(n + 1)]
+
+
+def dfs(x, wei):
+    for i in graph[x]:
+        a, b = i
+        if distance[a] == -1:
+            distance[a] = wei + b
+            dfs(a, wei + b)
+
+
+# 부모 노드, 자식 노드, 가중치
+for _ in range(n - 1):
     a, b, c = map(int, input().split())
-    if a==-1 and b==-1 and c==-1:
-        break
-    print(f'w({a}, {b}, {c}) = {w(a,b,c)}')
+    graph[a].append([b, c])
+    graph[b].append([a, c])
+
+
+pprint.pprint(graph)
+
+
+distance = [-1] * (n + 1)
+distance[1] = 0
+dfs(1, 0)
+# print(distance)
+
+start = distance.index(max(distance))
+distance = [-1] * (n + 1)
+distance[start] = 0
+dfs(start, 0)
+
+print(distance)
+print(max(distance))
+
+# RecursionError
+# 재귀 깊이 때문에 발생

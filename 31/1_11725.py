@@ -8,21 +8,26 @@ sys.stdin = open('input.txt')
 input = sys.stdin.readline
 
 # 여기부터 제출해야 한다.
-n = int(input())
-a = sorted(list(map(int, input().split())))
-m = int(input())
-b = list(map(int, input().split()))
+N=int(input())
+visited=[False]*(N+1)
+answer=[0]*(N+1)
+E=[[] for _ in range(N+1)]
+for i in range(N-1):
+    S,D=map(int,input().split())
+    E[S].append(D)
+    E[D].append(S)
 
-cnt = {}
 
-for i in a:
-    if i in cnt:
-        cnt[i] += 1
-    else:
-        cnt[i] = 1
+def dfs(E,v,visited):
+    visited[v]=True
+    for i in E[v]:
+        if not visited[i]:
+            answer[i]=v
+            dfs(E, i, visited)
+            
 
-for i in b:
-    if i in cnt:
-        print(cnt[i], end=" ")
-    else:
-        print(0, end=" ")
+dfs(E,1,visited)
+
+
+for i in range(2,N+1):
+        print(answer[i])
