@@ -14,7 +14,7 @@ def solution(n, t, m, p):
     answer_2 = ''
     for i in range(10000):
         answer += str(convert_notation(i, n))
-    for i in range(p, p*t*m, m):
+    for i in range(p-1, p*t*m, m):
         answer_2 += answer[i]
     return answer_2
 
