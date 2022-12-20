@@ -18,7 +18,7 @@ list_input = [[-1 for i in range(n+2)]]
 for i in range(n):
     list_input.append([-1]+list(map(int, sys.stdin.readline().split()))+[-1])
 list_input.append([-1 for i in range(n+2)])
-# pprint.pprint(list_input)
+pprint.pprint(list_input)
 
 # print(list_input[1][4])
 global count
